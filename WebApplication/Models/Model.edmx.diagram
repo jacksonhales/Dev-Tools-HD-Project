@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a28256ab90b94f50833bfedfce5727ef" Name="Diagram1">
+      <Diagram DiagramId="a91bae3dbb0a4d84b1eedfefd4b77f36" Name="Diagram1">
         <EntityTypeShape EntityType="ChallangeDataModel.Project" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ChallangeDataModel.Role" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="ChallangeDataModel.User" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />

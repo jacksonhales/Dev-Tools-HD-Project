@@ -21,10 +21,7 @@
             @Html.DisplayNameFor(model => model.Project.Descrption)
         </th>
         <th>
-            First name
-        </th>
-        <th>
-            Last name
+            @Html.DisplayNameFor(model => model.User.FirstName)
         </th>
         <th></th>
     </tr>
@@ -42,9 +39,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.User.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.LastName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
