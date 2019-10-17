@@ -14,13 +14,7 @@ namespace WebApplication.Models
     
     public partial class Role
     {
-        public int ProjectID { get; set; }
-        public int UserID { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public Nullable<int> Approved { get; set; }
-    
-        public virtual Project Project { get; set; }
-        public virtual User User { get; set; }
+        public int RoleID { get; set; }
+        public string description { get; set; }
     }
 }

@@ -12,13 +12,12 @@ namespace WebApplication.Controllers
 {
     public class RolesController : Controller
     {
-        private ChallangeDataEntities db = new ChallangeDataEntities();
+        private ChallangeDataEntities1 db = new ChallangeDataEntities1();
 
         // GET: Roles
         public ActionResult Index()
         {
-            var roles = db.Roles.Include(r => r.Project).Include(r => r.User);
-            return View(roles.ToList());
+            return View(db.Roles.ToList());
         }
 
         // GET: Roles/Details/5
@@ -39,8 +38,6 @@ namespace WebApplication.Controllers
         // GET: Roles/Create
         public ActionResult Create()
         {
-            ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "Descrption");
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "FirstName");
             return View();
         }
 
@@ -49,7 +46,7 @@ namespace WebApplication.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProjectID,UserID,Title,Description,Approved")] Role role)
+        public ActionResult Create([Bind(Include = "RoleID,description")] Role role)
         {
             if (ModelState.IsValid)
             {
@@ -58,8 +55,6 @@ namespace WebApplication.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "Descrption", role.ProjectID);
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "FirstName", role.UserID);
             return View(role);
         }
 
@@ -75,8 +70,6 @@ namespace WebApplication.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "Descrption", role.ProjectID);
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "FirstName", role.UserID);
             return View(role);
         }
 
@@ -85,7 +78,7 @@ namespace WebApplication.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProjectID,UserID,Title,Description,Approved")] Role role)
+        public ActionResult Edit([Bind(Include = "RoleID,description")] Role role)
         {
             if (ModelState.IsValid)
             {
@@ -93,8 +86,6 @@ namespace WebApplication.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "Descrption", role.ProjectID);
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "FirstName", role.UserID);
             return View(role);
         }
 

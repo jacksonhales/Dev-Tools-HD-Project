@@ -12,7 +12,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Descrption)
+            @Html.DisplayNameFor(model => model.Creator)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentOne)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentTwo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentThree)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectApproved)
         </th>
         <th></th>
     </tr>
@@ -20,7 +32,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Descrption)
+            @Html.DisplayFor(modelItem => item.Creator)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentOne)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentTwo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentThree)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectApproved)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ProjectID }) |

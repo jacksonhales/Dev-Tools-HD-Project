@@ -12,7 +12,7 @@ namespace WebApplication.Controllers
 {
     public class ProjectsController : Controller
     {
-        private ChallangeDataEntities db = new ChallangeDataEntities();
+        private ChallangeDataEntities1 db = new ChallangeDataEntities1();
 
         // GET: Projects
         public ActionResult Index()
@@ -46,7 +46,7 @@ namespace WebApplication.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProjectID,Descrption")] Project project)
+        public ActionResult Create([Bind(Include = "ProjectID,Creator,StudentOne,StudentTwo,StudentThree,ProjectApproved")] Project project)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace WebApplication.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProjectID,Descrption")] Project project)
+        public ActionResult Edit([Bind(Include = "ProjectID,Creator,StudentOne,StudentTwo,StudentThree,ProjectApproved")] Project project)
         {
             if (ModelState.IsValid)
             {

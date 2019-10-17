@@ -13,10 +13,10 @@ namespace WebApplication.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ChallangeDataEntities : DbContext
+    public partial class ChallangeDataEntities1 : DbContext
     {
-        public ChallangeDataEntities()
-            : base("name=ChallangeDataEntities")
+        public ChallangeDataEntities1()
+            : base("name=ChallangeDataEntities1")
         {
         }
     
@@ -27,6 +27,6 @@ namespace WebApplication.Models
     
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<user> users { get; set; }
     }
 }

@@ -10,24 +10,24 @@ using WebApplication.Models;
 
 namespace WebApplication.Controllers
 {
-    public class UsersController : Controller
+    public class usersController : Controller
     {
-        private ChallangeDataEntities db = new ChallangeDataEntities();
+        private ChallangeDataEntities1 db = new ChallangeDataEntities1();
 
-        // GET: Users
+        // GET: users
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            return View(db.users.ToList());
         }
 
-        // GET: Users/Details/5
+        // GET: users/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            user user = db.users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -35,22 +35,22 @@ namespace WebApplication.Controllers
             return View(user);
         }
 
-        // GET: Users/Create
+        // GET: users/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Users/Create
+        // POST: users/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserID,FirstName,LastName,JobTitle")] User user)
+        public ActionResult Create([Bind(Include = "UserID,StudentName")] user user)
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(user);
+                db.users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -58,14 +58,14 @@ namespace WebApplication.Controllers
             return View(user);
         }
 
-        // GET: Users/Edit/5
+        // GET: users/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            user user = db.users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -73,12 +73,12 @@ namespace WebApplication.Controllers
             return View(user);
         }
 
-        // POST: Users/Edit/5
+        // POST: users/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserID,FirstName,LastName,JobTitle")] User user)
+        public ActionResult Edit([Bind(Include = "UserID,StudentName")] user user)
         {
             if (ModelState.IsValid)
             {
@@ -89,14 +89,14 @@ namespace WebApplication.Controllers
             return View(user);
         }
 
-        // GET: Users/Delete/5
+        // GET: users/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            user user = db.users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -104,13 +104,13 @@ namespace WebApplication.Controllers
             return View(user);
         }
 
-        // POST: Users/Delete/5
+        // POST: users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
+            user user = db.users.Find(id);
+            db.users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
