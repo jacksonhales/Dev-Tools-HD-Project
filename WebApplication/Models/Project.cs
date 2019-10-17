@@ -15,10 +15,15 @@ namespace WebApplication.Models
     public partial class Project
     {
         public int ProjectID { get; set; }
-        public string Creator { get; set; }
         public string StudentOne { get; set; }
         public string StudentTwo { get; set; }
         public string StudentThree { get; set; }
-        public string ProjectApproved { get; set; }
+        public string StudentFour { get; set; }
+        public string Description { get; set; }
+    
+        public virtual User User { get; set; }
+        public virtual User User1 { get; set; }
+        public virtual User User2 { get; set; }
+        public virtual User User3 { get; set; }
     }
 }

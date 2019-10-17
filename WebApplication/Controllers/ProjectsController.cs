@@ -12,12 +12,13 @@ namespace WebApplication.Controllers
 {
     public class ProjectsController : Controller
     {
-        private ChallangeDataEntities1 db = new ChallangeDataEntities1();
+        private ChallangeDataEntities2 db = new ChallangeDataEntities2();
 
         // GET: Projects
         public ActionResult Index()
         {
-            return View(db.Projects.ToList());
+            var projects = db.Projects.Include(p => p.User).Include(p => p.User1).Include(p => p.User2).Include(p => p.User3);
+            return View(projects.ToList());
         }
 
         // GET: Projects/Details/5
@@ -38,6 +39,10 @@ namespace WebApplication.Controllers
         // GET: Projects/Create
         public ActionResult Create()
         {
+            ViewBag.StudentOne = new SelectList(db.Users, "UserName", "StudentName");
+            ViewBag.StudentTwo = new SelectList(db.Users, "UserName", "StudentName");
+            ViewBag.StudentThree = new SelectList(db.Users, "UserName", "StudentName");
+            ViewBag.StudentFour = new SelectList(db.Users, "UserName", "StudentName");
             return View();
         }
 
@@ -46,7 +51,7 @@ namespace WebApplication.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProjectID,Creator,StudentOne,StudentTwo,StudentThree,ProjectApproved")] Project project)
+        public ActionResult Create([Bind(Include = "ProjectID,StudentOne,StudentTwo,StudentThree,StudentFour,Description")] Project project)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +60,10 @@ namespace WebApplication.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.StudentOne = new SelectList(db.Users, "UserName", "StudentName", project.StudentOne);
+            ViewBag.StudentTwo = new SelectList(db.Users, "UserName", "StudentName", project.StudentTwo);
+            ViewBag.StudentThree = new SelectList(db.Users, "UserName", "StudentName", project.StudentThree);
+            ViewBag.StudentFour = new SelectList(db.Users, "UserName", "StudentName", project.StudentFour);
             return View(project);
         }
 
@@ -70,6 +79,10 @@ namespace WebApplication.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.StudentOne = new SelectList(db.Users, "UserName", "StudentName", project.StudentOne);
+            ViewBag.StudentTwo = new SelectList(db.Users, "UserName", "StudentName", project.StudentTwo);
+            ViewBag.StudentThree = new SelectList(db.Users, "UserName", "StudentName", project.StudentThree);
+            ViewBag.StudentFour = new SelectList(db.Users, "UserName", "StudentName", project.StudentFour);
             return View(project);
         }
 
@@ -78,7 +91,7 @@ namespace WebApplication.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProjectID,Creator,StudentOne,StudentTwo,StudentThree,ProjectApproved")] Project project)
+        public ActionResult Edit([Bind(Include = "ProjectID,StudentOne,StudentTwo,StudentThree,StudentFour,Description")] Project project)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +99,10 @@ namespace WebApplication.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.StudentOne = new SelectList(db.Users, "UserName", "StudentName", project.StudentOne);
+            ViewBag.StudentTwo = new SelectList(db.Users, "UserName", "StudentName", project.StudentTwo);
+            ViewBag.StudentThree = new SelectList(db.Users, "UserName", "StudentName", project.StudentThree);
+            ViewBag.StudentFour = new SelectList(db.Users, "UserName", "StudentName", project.StudentFour);
             return View(project);
         }
 

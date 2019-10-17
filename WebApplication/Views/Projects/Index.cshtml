@@ -12,19 +12,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Creator)
+            @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StudentOne)
+            @Html.DisplayNameFor(model => model.User.StudentName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StudentTwo)
+            @Html.DisplayNameFor(model => model.User1.StudentName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StudentThree)
+            @Html.DisplayNameFor(model => model.User2.StudentName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProjectApproved)
+            @Html.DisplayNameFor(model => model.User3.StudentName)
         </th>
         <th></th>
     </tr>
@@ -32,19 +32,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Creator)
+            @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.StudentOne)
+            @Html.DisplayFor(modelItem => item.User.StudentName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.StudentTwo)
+            @Html.DisplayFor(modelItem => item.User1.StudentName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.StudentThree)
+            @Html.DisplayFor(modelItem => item.User2.StudentName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProjectApproved)
+            @Html.DisplayFor(modelItem => item.User3.StudentName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ProjectID }) |
