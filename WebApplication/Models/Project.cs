@@ -25,5 +25,8 @@ namespace WebApplication.Models
         public virtual User User1 { get; set; }
         public virtual User User2 { get; set; }
         public virtual User User3 { get; set; }
+
+        public List<User> GetUsers { get { return new List<User>() { User, User1, User2, User3 }; } }
+
     }
 }
