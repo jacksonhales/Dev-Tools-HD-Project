@@ -14,13 +14,15 @@ namespace WebApplication.Controllers
     {
         private ChallangeDataEntities2 db = new ChallangeDataEntities2();
 
-        // GET: Users
+        // indexing a user object from a list of users
+        // GETTER: Users
         public ActionResult Index()
         {
             return View(db.Users.ToList());
         }
 
-        // GET: Users/Details/5
+        // brings up the names of each user object in the user list
+        // GETTER: Users/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -35,15 +37,15 @@ namespace WebApplication.Controllers
             return View(user);
         }
 
-        // GET: Users/Create
+        // creates a new user object
+        // GETTER: Users/Create
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Users/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // To protect from overposting attacks, please enable the specific properties you want to bind to.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "UserName,StudentName")] User user)
@@ -58,7 +60,8 @@ namespace WebApplication.Controllers
             return View(user);
         }
 
-        // GET: Users/Edit/5
+        // editing the properties of a user object (name)
+        // GETTER: Users/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -74,8 +77,7 @@ namespace WebApplication.Controllers
         }
 
         // POST: Users/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // To protect from overposting attacks, please enable the specific properties you want to bind to.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "UserName,StudentName")] User user)
@@ -89,7 +91,8 @@ namespace WebApplication.Controllers
             return View(user);
         }
 
-        // GET: Users/Delete/5
+        // deleting a user from string input
+        // GETTER: Users/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
