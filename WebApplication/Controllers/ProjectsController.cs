@@ -14,14 +14,15 @@ namespace WebApplication.Controllers
     {
         private ChallangeDataEntities2 db = new ChallangeDataEntities2();
 
-        // GET: Projects
+        // GETTER: Project
         public ActionResult Index()
         {
             var projects = db.Projects.Include(p => p.User).Include(p => p.User1).Include(p => p.User2).Include(p => p.User3);
             return View(projects.ToList());
         }
 
-        // GET: Projects/Details/5
+        // list the amount of avaliable projects to join from
+        // GETTER: Projects/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,7 +37,8 @@ namespace WebApplication.Controllers
             return View(project);
         }
 
-        // GET: Projects/Create
+        // creating a new project
+        // GETTER: Projects/Create
         public ActionResult Create()
         {
             ViewBag.StudentOne = new SelectList(db.Users, "UserName", "StudentName");
@@ -47,8 +49,7 @@ namespace WebApplication.Controllers
         }
 
         // POST: Projects/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // To protect from overposting attacks, please enable the specific properties you want to bind to.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProjectID,StudentOne,StudentTwo,StudentThree,StudentFour,Description")] Project project)
@@ -67,7 +68,8 @@ namespace WebApplication.Controllers
             return View(project);
         }
 
-        // GET: Projects/Edit/5
+        // editing memebers of a project
+        // GETTER: Projects/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -87,8 +89,7 @@ namespace WebApplication.Controllers
         }
 
         // POST: Projects/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // To protect from overposting attacks, please enable the specific properties you want to bind to.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ProjectID,StudentOne,StudentTwo,StudentThree,StudentFour,Description")] Project project)
@@ -106,7 +107,8 @@ namespace WebApplication.Controllers
             return View(project);
         }
 
-        // GET: Projects/Delete/5
+        // deleting/removing a project from the system
+        // GETTER: Projects/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -121,6 +123,7 @@ namespace WebApplication.Controllers
             return View(project);
         }
 
+        // confirming project deletion
         // POST: Projects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
